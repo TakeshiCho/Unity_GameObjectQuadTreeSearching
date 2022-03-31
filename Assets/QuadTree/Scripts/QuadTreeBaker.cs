@@ -34,8 +34,8 @@ namespace QuadTree.Scripts
             BakeTree(_tree);
             AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(QuadTreeData.GetHashCode()));
             QuadTreeData = ScriptableObject.CreateInstance<QuadTreeData>();
-            AssetDatabase.CreateAsset(QuadTreeData,"Assets/QuadTree/QuadTreeData.asset");
             QuadTreeData.TreeData = SortQuadTree(_tree);
+            AssetDatabase.CreateAsset(QuadTreeData,"Assets/QuadTree/QuadTreeData.asset");
         }
 
         void BakeTree(List<Scripts.Node> tree)
