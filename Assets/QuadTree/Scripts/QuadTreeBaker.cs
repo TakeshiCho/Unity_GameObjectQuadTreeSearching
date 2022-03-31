@@ -19,7 +19,7 @@ namespace QuadTree.Scripts
         private int _indexCounter = 1;
 
         
-        private List<Scripts.Node> _tree = new List<Scripts.Node>();
+        private List<Node> _tree = new List<Node>();
         public QuadTreeData QuadTreeData;
         
         [ContextMenu("Bake Tree")]
@@ -38,14 +38,14 @@ namespace QuadTree.Scripts
             AssetDatabase.CreateAsset(QuadTreeData,"Assets/QuadTree/QuadTreeData.asset");
         }
 
-        void BakeTree(List<Scripts.Node> tree)
+        void BakeTree(List<Node> tree)
         {
-            Scripts.Node quadTree = new Scripts.Node(ref _collectedGameObjects, tree, _treePosition, _treeSize, PerAreaMaxCount,0, ref _indexCounter);
+            Node quadTree = new Node(ref _collectedGameObjects, tree, _treePosition, _treeSize, PerAreaMaxCount,0, ref _indexCounter);
         }
         
-        List<Scripts.Node> SortQuadTree(List<Scripts.Node> originalTree)
+        List<Node> SortQuadTree(List<Node> originalTree)
         {
-            List<Scripts.Node> newTree = new List<Scripts.Node>();
+            List<Node> newTree = new List<Node>();
             for (int i = 0; i < originalTree.Count; i++)
             {
                 foreach (var node in originalTree)
@@ -93,7 +93,7 @@ namespace QuadTree.Scripts
     {
         public NodeInfo Info;
         public int[] GameObjectID;
-        public Node(ref List<GameObject> gameObjects,List<Scripts.Node> tree,float3 position,float3 size, int max,int index, ref int indexCounter)
+        public Node(ref List<GameObject> gameObjects,List<Node> tree,float3 position,float3 size, int max,int index, ref int indexCounter)
         {
             tree.Add(this);
             Info.Index = index;

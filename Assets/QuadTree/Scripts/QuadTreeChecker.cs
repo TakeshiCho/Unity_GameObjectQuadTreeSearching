@@ -14,8 +14,8 @@ namespace QuadTree.Scripts
         
         public QuadTreeData QuadTreeData;
         
-        private Scripts.Node _currentNode;
-        private Scripts.Node _previousNode;
+        private Node _currentNode;
+        private Node _previousNode;
         
         public static Dictionary<int, Renderer> Renderers = new Dictionary<int, Renderer>();
         private void Update()
@@ -24,7 +24,7 @@ namespace QuadTree.Scripts
             float3 moved = math.abs(_cameraPositionPrevious - cameraPosition);
             if (math.dot(moved,1) > 0)
             {
-                if(QuadTreeData.TreeData != null)_currentNode = Scripts.Node.Search(cameraPosition,QuadTreeData.TreeData);
+                if(QuadTreeData.TreeData != null)_currentNode = Node.Search(cameraPosition,QuadTreeData.TreeData);
                 
                 if (_previousNode != null && _previousNode != _currentNode)
                 {
