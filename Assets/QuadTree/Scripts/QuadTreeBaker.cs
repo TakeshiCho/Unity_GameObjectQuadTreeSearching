@@ -132,7 +132,7 @@ namespace QuadTree.Scripts
                 List<int> id = new List<int>();
                 foreach (var gameObject in collected)
                 {
-                    id.Add(gameObject.GetHashCode());
+                    id.Add(gameObject.GetComponent<GameObjectId>().GameObjectID);
                 }
                 GameObjectID = id.ToArray();
                 Info.ChildIndex = 0;
