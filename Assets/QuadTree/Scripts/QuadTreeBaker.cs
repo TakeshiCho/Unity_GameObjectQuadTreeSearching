@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 namespace QuadTree.Scripts
@@ -31,6 +32,9 @@ namespace QuadTree.Scripts
             _collectedGameObjects.AddRange(_gamebjects);
             
             BakeTree(_tree);
+            AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(QuadTreeData.GetHashCode()));
+            QuadTreeData = ScriptableObject.CreateInstance<QuadTreeData>();
+            AssetDatabase.CreateAsset(QuadTreeData,"Assets/QuadTree/QuadTreeData.asset");
             QuadTreeData.TreeData = SortQuadTree(_tree);
         }
 
